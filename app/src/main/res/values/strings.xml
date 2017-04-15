@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Filmes Populares</string>
+    <string name="action_settings">Opções</string>
+    <string name="title_activity_settings">Opções</string>
+    <string name="pref_resumo">Define a ordem em que os filmes são exibidos</string>
+    <string name="pref_titulo">Ordem de classificação</string>
+    <string name="pref_valor_padrao">1</string>
+    <string name="pref_classificao_key">classificacao</string>
+    <string name="title_activity_filme">FilmeActivity</string>
+    <string name="extra_filme">filme</string>
+</resources>

@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by dev on 09/04/2017.
  */
 
-public class Filme implements Serializable{
+public class Filme implements Serializable {
 
     public String poster_path;
     private String vote_average;

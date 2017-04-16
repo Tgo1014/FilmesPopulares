@@ -34,11 +34,11 @@ import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
 public class MainActivityFragment extends Fragment {
 
+    static final String PREF_MAIS_POPULARES = "1";
+    static final String PREF_MELHORES_CLASSIFICADOS = "2";
     FilmesAdapter mFilmesAdapter;
     ArrayList<Filme> listaFilmes;
     GridView gridFilmes;
-    static final String PREF_MAIS_POPULARES = "1";
-    static final String PREF_MELHORES_CLASSIFICADOS = "2";
 
     public MainActivityFragment() {
     }
@@ -70,8 +70,8 @@ public class MainActivityFragment extends Fragment {
         carregaFilmes();
     }
 
-    private void carregaFilmes(){
-        if(NetworkUtil.estaConectado(getContext())){
+    private void carregaFilmes() {
+        if (NetworkUtil.estaConectado(getContext())) {
             new FilmesPopulares().execute();
         } else {
             Snackbar snackbar = Snackbar.make(getView(), getString(R.string.txt_sem_conexao), Snackbar.LENGTH_INDEFINITE);

@@ -13,4 +13,5 @@
     <string name="txt_sinopse">Sinopse</string>
     <string name="txt_sem_conexao">Não há conexão com a internet!</string>
     <string name="txt_tentar_novamente">Tentar novamente</string>
+    <string name="tamanho_img_grid">342</string> <!--"w92", "w154", "w185", "w342", "w500", "w780", or "original"-->
 </resources>

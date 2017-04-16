@@ -53,6 +53,7 @@ public class MainActivityFragment extends Fragment {
         gridFilmes = (GridView) view.findViewById(R.id.gridFilmes);
 
         gridFilmes.setAdapter(mFilmesAdapter);
+        gridFilmes.setColumnWidth(Integer.parseInt(getString(R.string.tamanho_img_grid))); //define o tamanho do grid conforme o tamanho da img que ele baixar
         gridFilmes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -3,6 +3,7 @@ package tgo1014.filmespopulares.Filmes;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,6 @@ import tgo1014.filmespopulares.R;
 public class FilmesAdapter extends ArrayAdapter<Filme> {
 
     static final String BASE_URL_IMAGENS = "http://image.tmdb.org/t/p";
-    static final String TAMANHO_IMAGEM = "/w342"; //"w92", "w154", "w185", "w342", "w500", "w780", or "original"
 
     public FilmesAdapter(Activity mContext, List<Filme> mFilme) {
         super(mContext, 0, mFilme);
@@ -38,7 +38,7 @@ public class FilmesAdapter extends ArrayAdapter<Filme> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item_filme, parent, false);
 
         ImageView cartaz = (ImageView) convertView.findViewById(R.id.imgViewCartaz);
-        Picasso.with(getContext()).load(BASE_URL_IMAGENS + TAMANHO_IMAGEM + filme.getPoster_path()).into(cartaz);
+        Picasso.with(getContext()).load(BASE_URL_IMAGENS + "/w" + getContext().getString(R.string.tamanho_img_grid) + filme.getPoster_path()).into(cartaz);
 
         return convertView;
     }

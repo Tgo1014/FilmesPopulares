@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:scaleType="centerCrop"
     android:adjustViewBounds="true"
+    android:orientation="vertical"
     >
 
 </ImageView>

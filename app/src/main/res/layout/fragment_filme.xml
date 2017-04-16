@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -58,14 +58,14 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Avaliação: "
+                    android:text="@string/txt_avaliacao"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtAvaliacao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10" />
+                    tools:text="10" />
 
             </LinearLayout>
 
@@ -80,14 +80,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Data de Lançamento: "
+                    android:text="@string/txt_data_lancamento"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtDataLancamento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="99/99/9999" />
+                    tools:text="99/99/9999" />
             </LinearLayout>
 
             <TextView
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:text="Sinopse"
+                android:text="@string/txt_sinopse"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Lore Ipsum" />
+                tools:text="Lore Ipsum" />
 
         </LinearLayout>
 

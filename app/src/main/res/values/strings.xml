@@ -8,4 +8,7 @@
     <string name="pref_classificao_key">classificacao</string>
     <string name="title_activity_filme">FilmeActivity</string>
     <string name="extra_filme">filme</string>
+    <string name="txt_avaliacao">Avaliação: </string>
+    <string name="txt_data_lancamento">Data de Lançamento: </string>
+    <string name="txt_sinopse">Sinopse</string>
 </resources>

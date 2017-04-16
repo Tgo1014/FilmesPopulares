@@ -1,14 +1,11 @@
 package tgo1014.filmespopulares.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +28,7 @@ import tgo1014.filmespopulares.Activities.FilmeActivity;
 import tgo1014.filmespopulares.Filmes.Filme;
 import tgo1014.filmespopulares.Filmes.FilmesAdapter;
 import tgo1014.filmespopulares.R;
+import tgo1014.filmespopulares.Util.NetworkUtil;
 
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
@@ -68,14 +66,22 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (estaConectado())
-            new FilmesPopulares().execute();
+        carregaFilmes();
     }
 
-    public boolean estaConectado() {
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
+    private void carregaFilmes(){
+        if(NetworkUtil.estaConectado(getContext())){
+            new FilmesPopulares().execute();
+        } else {
+            Snackbar snackbar = Snackbar.make(getView(), getString(R.string.txt_sem_conexao), Snackbar.LENGTH_INDEFINITE);
+            snackbar.setAction(R.string.txt_tentar_novamente, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    carregaFilmes();
+                }
+            });
+            snackbar.show();
+        }
     }
 
 

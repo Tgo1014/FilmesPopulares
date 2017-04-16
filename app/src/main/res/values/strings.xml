@@ -11,4 +11,6 @@
     <string name="txt_avaliacao">Avaliação: </string>
     <string name="txt_data_lancamento">Data de Lançamento: </string>
     <string name="txt_sinopse">Sinopse</string>
+    <string name="txt_sem_conexao">Não há conexão com a internet!</string>
+    <string name="txt_tentar_novamente">Tentar novamente</string>
 </resources>

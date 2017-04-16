@@ -44,7 +44,7 @@ public class FilmeActivityFragment extends Fragment {
 
     public void configuraFilme(Filme filme) {
         final String BASE_URL_IMAGENS = "http://image.tmdb.org/t/p";
-        final String TAMANHO_IMAGEM = "/w342"; //"w92", "w154", "w185", "w342", "w500", "w780", or "original"
+        final String TAMANHO_IMAGEM = "/w500"; //"w92", "w154", "w185", "w342", "w500", "w780", or "original"
 
         Picasso.with(getActivity()).load(BASE_URL_IMAGENS + TAMANHO_IMAGEM + filme.getPoster_path()).into((ImageView) getActivity().findViewById(R.id.imgPoster));
         ((TextView) getActivity().findViewById(R.id.txtNomeFilme)).setText(filme.getOriginal_title());

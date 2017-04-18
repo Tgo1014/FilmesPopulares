@@ -48,7 +48,7 @@ public class FilmesAdapter extends ArrayAdapter<Filme> {
         return convertView;
     }
 
-    public static class ViewHolder {
-        public ImageView imageView;
+    private static class ViewHolder {
+        ImageView imageView;
     }
 }

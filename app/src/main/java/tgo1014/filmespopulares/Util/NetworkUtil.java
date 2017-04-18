@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tgo1014.filmespopulares.Filmes.Filme;
+import tgo1014.filmespopulares.Filmes.FilmeProcessor;
 import tgo1014.filmespopulares.R;
 
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
@@ -95,7 +96,7 @@ public class NetworkUtil {
         for (int i = 0; i < filmesArray.length(); i++) {
             try {
                 JSONObject filmeJson = filmesArray.getJSONObject(i);
-                Filme filme = new Filme(filmeJson);
+                Filme filme = FilmeProcessor.process(filmeJson);
                 filmeList.add(filme);
             } catch (JSONException e) {
                 e.printStackTrace();

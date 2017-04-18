@@ -29,7 +29,7 @@ public class FilmeActivityFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         if (intent != null) {
-            filme = (Filme) intent.getExtras().getSerializable(getString(R.string.extra_filme));
+            filme = intent.getExtras().getParcelable(getString(R.string.extra_filme));
         }
 
         return view;

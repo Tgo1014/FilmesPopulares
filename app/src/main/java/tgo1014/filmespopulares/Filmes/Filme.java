@@ -1,15 +1,13 @@
 package tgo1014.filmespopulares.Filmes;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by dev on 09/04/2017.
  */
 
-public class Filme implements Serializable {
+public class Filme implements Parcelable {
 
     public String poster_path;
     private String vote_average;
@@ -26,27 +24,51 @@ public class Filme implements Serializable {
     private String video;
     private String popularity;
 
-    public Filme(JSONObject filme) {
-        try {
-            this.vote_average = filme.getString("vote_average");
-            this.backdrop_path = filme.getString("backdrop_path");
-            this.adult = filme.getString("adult");
-            this.id = filme.getString("id");
-            this.title = filme.getString("title");
-            this.overview = filme.getString("overview");
-            this.original_language = filme.getString("original_language");
-            this.genre_ids = null;
-            this.release_date = filme.getString("release_date");
-            this.original_title = filme.getString("original_title");
-            this.vote_count = filme.getString("vote_count");
-            this.poster_path = filme.getString("poster_path");
-            this.video = filme.getString("video");
-            this.popularity = filme.getString("popularity");
-        } catch (JSONException e) {
-            e.printStackTrace();
+    public Filme() {
+        this.poster_path = "";
+        this.vote_average = "";
+        this.backdrop_path = "";
+        this.adult = "";
+        this.id = "";
+        this.title = "";
+        this.overview = "";
+        this.original_language = "";
+        this.genre_ids = null;
+        this.release_date = "";
+        this.original_title = "";
+        this.vote_count = "";
+        this.video = "";
+        this.popularity = "";
+    }
+
+    private Filme(Parcel in) {
+        poster_path = in.readString();
+        vote_average = in.readString();
+        backdrop_path = in.readString();
+        adult = in.readString();
+        id = in.readString();
+        title = in.readString();
+        overview = in.readString();
+        original_language = in.readString();
+        genre_ids = in.createStringArray();
+        release_date = in.readString();
+        original_title = in.readString();
+        vote_count = in.readString();
+        video = in.readString();
+        popularity = in.readString();
+    }
+
+    public static final Creator<Filme> CREATOR = new Creator<Filme>() {
+        @Override
+        public Filme createFromParcel(Parcel in) {
+            return new Filme(in);
         }
 
-    }
+        @Override
+        public Filme[] newArray(int size) {
+            return new Filme[size];
+        }
+    };
 
     public String getVote_average() {
         return vote_average;
@@ -163,5 +185,28 @@ public class Filme implements Serializable {
     @Override
     public String toString() {
         return "Filme: [vote_average = " + vote_average + ", backdrop_path = " + backdrop_path + ", adult = " + adult + ", id = " + id + ", title = " + title + ", overview = " + overview + ", original_language = " + original_language + ", genre_ids = " + genre_ids + ", release_date = " + release_date + ", original_title = " + original_title + ", vote_count = " + vote_count + ", poster_path = " + poster_path + ", video = " + video + ", popularity = " + popularity + "]";
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(poster_path);
+        dest.writeString(vote_average);
+        dest.writeString(backdrop_path);
+        dest.writeString(adult);
+        dest.writeString(id);
+        dest.writeString(title);
+        dest.writeString(overview);
+        dest.writeString(original_language);
+        dest.writeStringArray(genre_ids);
+        dest.writeString(release_date);
+        dest.writeString(original_title);
+        dest.writeString(vote_count);
+        dest.writeString(video);
+        dest.writeString(popularity);
     }
 }

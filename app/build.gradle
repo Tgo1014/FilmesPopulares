@@ -33,13 +33,16 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    //Libs adicionais
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:support-vector-drawable:25.3.1'
     testCompile 'junit:junit:4.12'
+
+    //Libs adicionais
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.orhanobut:hawk:2.0.1'
 }
 
 

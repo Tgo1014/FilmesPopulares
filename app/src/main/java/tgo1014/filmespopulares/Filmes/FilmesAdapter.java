@@ -30,15 +30,25 @@ public class FilmesAdapter extends ArrayAdapter<Filme> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-        Filme filme = getItem(position);
-
-        if (convertView == null)
+        ViewHolder holder;
+        //criando a view
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item_filme, parent, false);
-
-        ImageView cartaz = (ImageView) convertView.findViewById(R.id.imgViewCartaz);
-        Picasso.with(getContext()).load(BASE_URL_IMAGENS + "/w" + getContext().getString(R.string.tamanho_img_grid) + filme.getPoster_path()).into(cartaz);
+            holder = new ViewHolder();
+            holder.imageView = (ImageView) convertView.findViewById(R.id.imgViewCartaz);
+            convertView.setTag(holder);
+        }
+        //reciclando a view
+        else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        Filme filme = getItem(position);
+        Picasso.with(getContext()).load(BASE_URL_IMAGENS + "/w" + getContext().getString(R.string.tamanho_img_grid) + filme.getPoster_path()).into(holder.imageView);
 
         return convertView;
+    }
+
+    public static class ViewHolder {
+        public ImageView imageView;
     }
 }

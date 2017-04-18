@@ -71,7 +71,8 @@ public class NetworkUtil {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                if (!response.isSuccessful()) throw new IOException("Código não esperado: " + response);
+                if (!response.isSuccessful())
+                    throw new IOException("Código não esperado: " + response);
                 try {
                     JSONArray filmeList = getFilmesPopularesJSON(response.body().string());
                     //salva o resultado nas preferencias para ser utilizado pelo adapter

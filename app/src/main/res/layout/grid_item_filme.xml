@@ -3,9 +3,8 @@
     android:id="@+id/imgViewCartaz"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scaleType="centerCrop"
     android:adjustViewBounds="true"
     android:orientation="vertical"
-    >
+    android:scaleType="centerCrop">
 
 </ImageView>

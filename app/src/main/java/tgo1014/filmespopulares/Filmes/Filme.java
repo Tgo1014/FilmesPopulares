@@ -9,6 +9,17 @@ import android.os.Parcelable;
 
 public class Filme implements Parcelable {
 
+    public static final Creator<Filme> CREATOR = new Creator<Filme>() {
+        @Override
+        public Filme createFromParcel(Parcel in) {
+            return new Filme(in);
+        }
+
+        @Override
+        public Filme[] newArray(int size) {
+            return new Filme[size];
+        }
+    };
     public String poster_path;
     private String vote_average;
     private String backdrop_path;
@@ -58,18 +69,6 @@ public class Filme implements Parcelable {
         popularity = in.readString();
     }
 
-    public static final Creator<Filme> CREATOR = new Creator<Filme>() {
-        @Override
-        public Filme createFromParcel(Parcel in) {
-            return new Filme(in);
-        }
-
-        @Override
-        public Filme[] newArray(int size) {
-            return new Filme[size];
-        }
-    };
-
     public String getVote_average() {
         return vote_average;
     }
@@ -78,16 +77,8 @@ public class Filme implements Parcelable {
         this.vote_average = vote_average;
     }
 
-    public String getBackdrop_path() {
-        return backdrop_path;
-    }
-
     public void setBackdrop_path(String backdrop_path) {
         this.backdrop_path = backdrop_path;
-    }
-
-    public String getAdult() {
-        return adult;
     }
 
     public void setAdult(String adult) {
@@ -118,16 +109,8 @@ public class Filme implements Parcelable {
         this.overview = overview;
     }
 
-    public String getOriginal_language() {
-        return original_language;
-    }
-
     public void setOriginal_language(String original_language) {
         this.original_language = original_language;
-    }
-
-    public String[] getGenre_ids() {
-        return genre_ids;
     }
 
     public void setGenre_ids(String[] genre_ids) {
@@ -150,10 +133,6 @@ public class Filme implements Parcelable {
         this.original_title = original_title;
     }
 
-    public String getVote_count() {
-        return vote_count;
-    }
-
     public void setVote_count(String vote_count) {
         this.vote_count = vote_count;
     }
@@ -166,16 +145,8 @@ public class Filme implements Parcelable {
         this.poster_path = poster_path;
     }
 
-    public String getVideo() {
-        return video;
-    }
-
     public void setVideo(String video) {
         this.video = video;
-    }
-
-    public String getPopularity() {
-        return popularity;
     }
 
     public void setPopularity(String popularity) {

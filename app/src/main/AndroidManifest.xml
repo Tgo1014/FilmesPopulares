@@ -23,14 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".Activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="tgo1014.filmespopulares.Activities.MainActivity" />
-        </activity>
-        <activity
             android:name=".Activities.FilmeActivity"
             android:label="@string/title_activity_filme"
             android:parentActivityName=".Activities.MainActivity"

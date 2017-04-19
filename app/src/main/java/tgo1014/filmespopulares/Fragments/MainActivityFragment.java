@@ -1,10 +1,15 @@
 package tgo1014.filmespopulares.Fragments;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -34,6 +39,7 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        setHasOptionsMenu(true);
 
         listaFilmes = new ArrayList<>();
         mFilmesAdapter = new FilmesAdapter(getActivity(), listaFilmes);
@@ -52,12 +58,24 @@ public class MainActivityFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
         carregaFilmes();
     }
 
-    private void carregaFilmes() {
+    @Override
+    public void onResume() {
+        super.onResume();
+        carregaFilmes();
+    }
+
+    public void carregaFilmes() {
         if (NetworkUtil.estaConectado(getContext())) {
             NetworkUtil.requisicaoDeFilme(getContext());
             List<Filme> filmes = Hawk.get("ARRAY_FILMES");
@@ -65,6 +83,7 @@ public class MainActivityFragment extends Fragment {
             for (Filme filme : filmes) {
                 mFilmesAdapter.add(filme);
             }
+
         } else {
             Snackbar snackbar = Snackbar.make(getView(), getString(R.string.txt_sem_conexao), Snackbar.LENGTH_INDEFINITE);
             snackbar.setAction(R.string.txt_tentar_novamente, new View.OnClickListener() {
@@ -75,5 +94,25 @@ public class MainActivityFragment extends Fragment {
             });
             snackbar.show();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_ordem_classificacao) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Ordem de classificacao")
+                    .setItems(R.array.array_classificacao, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Hawk.put(getString(R.string.pref_classificao_key), String.valueOf(which));
+                            carregaFilmes();
+                        }
+                    });
+            builder.show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

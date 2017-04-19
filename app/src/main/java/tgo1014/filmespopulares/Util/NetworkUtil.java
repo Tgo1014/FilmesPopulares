@@ -23,16 +23,14 @@ import tgo1014.filmespopulares.Filmes.Filme;
 import tgo1014.filmespopulares.Filmes.FilmeProcessor;
 import tgo1014.filmespopulares.R;
 
-import static android.preference.PreferenceManager.getDefaultSharedPreferences;
-
 /**
  * Created by tgo10 on 16/04/2017.
  */
 
 public class NetworkUtil {
 
-    private static final String PREF_MAIS_POPULARES = "1";
-    private static final String PREF_MELHORES_CLASSIFICADOS = "2";
+    private static final String PREF_MAIS_POPULARES = "0";
+    private static final String PREF_MELHORES_CLASSIFICADOS = "1";
 
     public static boolean estaConectado(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -42,18 +40,21 @@ public class NetworkUtil {
 
     public static void requisicaoDeFilme(final Context context) {
         OkHttpClient client = new OkHttpClient();
-        String URL_BASE_FILMES = null;
+        String URL_BASE_FILMES;
         final String LINGUA_PARAM = "language";
         final String API_PARAM = "api_key";
         String lingua = "pt-br";
 
-        switch (getDefaultSharedPreferences(context.getApplicationContext()).getString(context.getString(R.string.pref_classificao_key), context.getString(R.string.pref_valor_padrao))) {
+        String ordem_classificacao = Hawk.get(context.getString(R.string.pref_classificao_key), context.getString(R.string.pref_classificao_valor_padrao));
+
+        switch (ordem_classificacao) {
             case PREF_MAIS_POPULARES:
                 URL_BASE_FILMES = "https://api.themoviedb.org/3/movie/popular?";
                 break;
             case PREF_MELHORES_CLASSIFICADOS:
                 URL_BASE_FILMES = "https://api.themoviedb.org/3/movie/top_rated?";
                 break;
+            default: URL_BASE_FILMES = "https://api.themoviedb.org/3/movie/popular?";
         }
 
         HttpUrl.Builder builder = HttpUrl.parse(URL_BASE_FILMES).newBuilder();

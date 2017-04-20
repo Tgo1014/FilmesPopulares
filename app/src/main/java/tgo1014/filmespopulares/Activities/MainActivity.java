@@ -18,8 +18,4 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Hawk.init(this).build();
     }
-
-
-
-
 }

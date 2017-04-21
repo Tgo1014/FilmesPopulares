@@ -1,10 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="tgo1014.filmespopulares.Activities.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/action_ordem_classificacao"
-        android:orderInCategory="100"
-        android:title="@string/action_ordem_classificacao"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/id_populares"
+        android:title="@string/action_populares"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/id_melhores_avaliados"
+        android:title="@string/pref_melhores_avaliados"
+        app:showAsAction="never" />
 </menu>

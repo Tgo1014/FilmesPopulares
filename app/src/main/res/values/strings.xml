@@ -11,5 +11,7 @@
     <string name="txt_tentar_novamente">Tentar novamente</string>
     <string name="tamanho_img_grid">342</string>
     <string name="pref_array_filmes">ARRAY_FILMES</string>
-    <string name="action_ordem_classificacao">Ordem de Classificação</string> <!--"w92", "w154", "w185", "w342", "w500", "w780", or "original"-->
+    <string name="action_ordem_classificacao">Ordem de Classificação</string>
+    <string name="action_populares">Populares</string>
+    <string name="pref_melhores_avaliados">Melhores Avaliados</string> <!--"w92", "w154", "w185", "w342", "w500", "w780", or "original"-->
 </resources>

@@ -1,11 +1,9 @@
 package tgo1014.filmespopulares.Fragments;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -80,10 +78,11 @@ public class MainActivityFragment extends Fragment {
             NetworkUtil.requisicaoDeFilme(getContext());
             List<Filme> filmes = Hawk.get("ARRAY_FILMES");
             mFilmesAdapter.clear();
-            for (Filme filme : filmes) {
-                mFilmesAdapter.add(filme);
+            if (filmes.size() > 0) {
+                for (Filme filme : filmes) {
+                    mFilmesAdapter.add(filme);
+                }
             }
-
         } else {
             Snackbar snackbar = Snackbar.make(getView(), getString(R.string.txt_sem_conexao), Snackbar.LENGTH_INDEFINITE);
             snackbar.setAction(R.string.txt_tentar_novamente, new View.OnClickListener() {
@@ -98,21 +97,15 @@ public class MainActivityFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_ordem_classificacao) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Ordem de classificacao")
-                    .setItems(R.array.array_classificacao, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Hawk.put(getString(R.string.pref_classificao_key), String.valueOf(which));
-                            carregaFilmes();
-                        }
-                    });
-            builder.show();
-            return true;
+        switch (item.getItemId()) {
+            case R.id.id_populares:
+                Hawk.put(getString(R.string.pref_classificao_key), "0");
+                break;
+            case R.id.id_melhores_avaliados:
+                Hawk.put(getString(R.string.pref_classificao_key), "1");
+                break;
         }
+        carregaFilmes();
         return super.onOptionsItemSelected(item);
     }
 }
